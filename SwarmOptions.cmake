@@ -18,3 +18,18 @@ else()
     set(ENGINE_BUILD_TYPE STATIC)
     set(MODULE_BUILD_TYPE SHARED)
 endif()
+
+# Default Install Locations
+if(NOT ENGINE_INSTALL_LOCATION)
+    set(ENGINE_INSTALL_LOCATION ${CMAKE_SOURCE_DIR}/engine)
+endif(NOT ENGINE_INSTALL_LOCATION)
+if(NOT EXTERNAL_INSTALL_LOCATION)
+    set(EXTERNAL_INSTALL_LOCATION ${CMAKE_SOURCE_DIR}/external)
+endif(NOT EXTERNAL_INSTALL_LOCATION)
+
+# Specify Include and Link Directories
+include_directories(${ENGINE_INSTALL_LOCATION}/include)
+include_directories(${EXTERNAL_INSTALL_LOCATION}/include)
+link_directories(${ENGINE_INSTALL_LOCATION}/lib)
+link_directories(${EXTERNAL_INSTALL_LOCATION}/lib)
+

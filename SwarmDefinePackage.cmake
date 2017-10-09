@@ -37,5 +37,12 @@ function(SwarmDefinePackage Name Version)
     add_library(Swarm${Name} ${ENGINE_BUILD_TYPE} ${ARGN})
     target_link_libraries(Swarm${Name} ${SwarmPackageLibraries})
     add_dependencies(Swarm${Name} ${SwarmPackageDependencies})
+    install(TARGETS Swarm${Name} DESTINATION lib)
 
 endfunction(SwarmDefinePackage)
+
+
+# Package File Install Function
+function(SwarmDefineInstallFiles)
+    install(FILES ${ARGV} DESTINATION include)
+endfunction(SwarmDefineInstallFiles)
